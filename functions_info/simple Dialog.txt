@@ -1,0 +1,50 @@
+
+   showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            insetPadding: EdgeInsets.all(12),
+            backgroundColor: black,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextFormField(
+                    controller: linkTitle,
+                    style: GoogleFonts.notoSans(
+                        textStyle:
+                            TextStyle(color: Colors.blue, fontSize: 16)),
+                    decoration: InputDecoration(
+                        hintText: "i.e. Facebook",
+                        hintStyle: TextStyle(
+                            color: Colors.white.withOpacity(0.5),
+                            fontSize: 12),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20))),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 15)),
+                  ),
+                  5.height,
+                  TextFormField(
+                    controller: linkUrl,
+                    style: GoogleFonts.notoSans(
+                        textStyle:
+                            TextStyle(color: Colors.blue, fontSize: 16)),
+                    decoration: InputDecoration(
+                        hintText: "paste link here...",
+                        hintStyle: TextStyle(
+                            color: Colors.white.withOpacity(0.5),
+                            fontSize: 12),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(20))),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 15)),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });

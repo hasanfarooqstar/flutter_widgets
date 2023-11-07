@@ -1,0 +1,13 @@
+
+===========================================
+formate number 1000 to 1k using intl
+
+extension CustomNumberFormatting on num {
+  String formatCompact() {
+    final compactFormat = NumberFormat.compact();
+    return compactFormat.format(this);
+  }
+}
+
+
+===========================================

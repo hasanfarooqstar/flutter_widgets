@@ -1,0 +1,27 @@
+add fileds in Database.
+FirebaseFirestore.instance
+        .collection('payments')
+        .get()
+        .then((value) => value.docs.forEach((element) {
+              element.reference.update({
+                'fieldName': 'value',
+                'fieldName2': 'value',
+              });
+            }));
+
+-----------------------------------------------
+          CustomButton(text: "Add fields",
+          onTap: (){
+            FirebaseFirestore.instance.collection('payments').get().then((value) => value.docs.forEach((element) {
+              element.reference.update({
+                'isPaymentComplete': false,
+                'typeOfSeller': 'chef',
+                'accountHolderNameOfSeller': '',
+                'accountNumberOfSeller': '',
+                'bankNameOfSeller': '',
+                'transactionChannelOfSeller': '',
+                'transactionIdOfSeller': '',
+              });
+            }));
+          },
+          ),

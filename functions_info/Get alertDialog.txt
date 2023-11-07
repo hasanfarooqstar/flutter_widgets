@@ -1,0 +1,75 @@
+    Get.dialog(
+      Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AlertDialog(
+            actionsPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 12),
+            insetPadding: EdgeInsets.zero,
+            titlePadding: EdgeInsets.symmetric(vertical: 13, horizontal: 30),
+            title: Text("Add your Link"),
+            content: SingleChildScrollView(
+              child: Container(
+                width: Get.width / 1.2,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextFormField(
+                      controller: linkTitle,
+                      style: GoogleFonts.notoSans(
+                          textStyle:
+                              TextStyle(color: Colors.blue, fontSize: 16)),
+                      decoration: InputDecoration(
+                          hintText: "i.e. Facebook",
+                          hintStyle: TextStyle(
+                              color: Colors.white.withOpacity(0.5),
+                              fontSize: 12),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20))),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 20, horizontal: 15)),
+                    ),
+                    5.height,
+                    TextFormField(
+                      controller: linkUrl,
+                      style: GoogleFonts.notoSans(
+                          textStyle:
+                              TextStyle(color: Colors.blue, fontSize: 16)),
+                      decoration: InputDecoration(
+                          hintText: "paste link here...",
+                          hintStyle: TextStyle(
+                              color: Colors.white.withOpacity(0.5),
+                              fontSize: 12),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(20))),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 20, horizontal: 15)),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: Text("Cancel")),
+              TextButton(
+                  onPressed: () {
+                    LinksController().addLink(linkTitle.text, linkUrl.text);
+                    Get.back();
+                  },
+                  child: CustomIconButton(
+                      text: "Save",
+                      textColor: white,
+                      width: 70,
+                      boxColor: primaryColor)),
+            ],
+          ),
+        ],
+      ),
+    );

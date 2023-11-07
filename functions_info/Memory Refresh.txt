@@ -1,0 +1,30 @@
+WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+// Your code here      
+
+}
+
+=======================================
+Convert Uint8List to XFile
+      Uint8List? editedPhoto; 
+      XFile file = XFile.fromData(editedPhoto, name: 'abc.png', mimeType: 'png');
+      await Share.shareXFiles([file]);
+--------------
+Convert File/XFile to Uint8List
+Future<Uint8List?> imagePickAsUint8list() async {
+    Uint8List? pickedImage = null;
+
+    final XFile? file =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (file != null) {
+      pickedImage = await File(file.path).readAsBytes();
+      update();
+      return pickedImage;
+    }
+    return null;
+  }
+------------------
+
+
+
+===========================================
+

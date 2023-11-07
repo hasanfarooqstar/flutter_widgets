@@ -1,0 +1,38 @@
+ copyToClipboard(LinkModel linkModel) async{
+    await Clipboard.setData(ClipboardData(text: "${linkModel.title} \n ${linkModel.url}"));
+
+    Get.snackbar("Copy","Link detail copied to clipboard", backgroundColor: Colors.white, colorText: Colors.black);
+  }
+
+
+  void launchLink(String link) async {
+    final Uri url;
+    if(link.contains("https://")){url=Uri.parse(link);}
+    else{url=Uri.parse("https://${link}");}
+  try{
+        await launchUrl(url,mode: LaunchMode.externalApplication);
+    }catch(e){
+      print("Sorry, Could not launch $e");
+      Get.snackbar(
+        'Launching URL',
+        'Sorry, Could not launch URL, Maybe URL is faulty',
+        // snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.white,
+        colorText: Colors.black,
+      );
+    }
+}
+
+  shareAllLinks(){
+    if(urlList.isNotEmpty){
+      String collectedText="";
+    for (LinkModel linkModel in urlList) {
+    collectedText += '${linkModel.title}: \n ${linkModel.url} \n\n';
+  }
+    Share.share(collectedText);
+    }
+    else{
+    Get.snackbar("No Data","Please add links first", backgroundColor: Colors.white, colorText: Colors.black);
+
+    }
+  }
