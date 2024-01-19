@@ -1,0 +1,21 @@
+How to use flutter web host
+
+flutter run -d chrome --web-hostname 192.168.18.52 --web-port 26261 --web-renderer html
+
+
+===============
+
+how to realease apk
+
+keytool -genkey -v -keystore upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+
+==================
+For SHA keys
+
+cd android
+./gradlew signingReport 
+
+
+---------------------
+get production SHA keys
+keytool -list -v -keystore "E:\Project\Techorra\Flutter Projects\bookinguser\android\app\upload-keystore.jks"-alias upload -storepass 123456 -keypass 123456
